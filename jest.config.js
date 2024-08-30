@@ -43,8 +43,6 @@ module.exports = {
   },
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
   resetMocks: true,
-  collectCoverage: true,
-  coverageDirectory: '<rootDir>/coverage',
   collectCoverageFrom: [
     'src/**/*.js',
     '!<rootDir>/node_modules/**/*',

@@ -30,9 +30,3 @@ public/extra-*
 *.ignored.*
 ignored/
 .eslintcache
-
-# Ignore Gradle project-specific cache directory
-.gradle
-
-# Ignore Gradle build output directory
-build
