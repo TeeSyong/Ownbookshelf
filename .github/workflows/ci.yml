@@ -2,9 +2,9 @@ name: CI/CD
 
 on:
   push:
-    branches: [AllexBookshelf]
+    branches: [main]
   pull_request:
-    branches: [AllexBookshelf]
+    branches: [main]
 
 jobs:
   build:
