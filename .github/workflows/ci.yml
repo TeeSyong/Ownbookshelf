@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ AllexBookshelf ]
+    branches: [AllexBookshelf]
   pull_request:
-    branches: [ AllexBookshelf ]
+    branches: [AllexBookshelf]
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
 
       - name: Run Unit Tests and Coverage
         run: npm test -- --coverage --no-watch
-      
+
       - name: Archive Coverage Reports
         uses: actions/upload-artifact@v3
         with:
@@ -45,6 +45,18 @@ jobs:
         with:
           name: build-artifacts
           path: distributions/bookshelf.zip
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker image
+        run: docker build -t react-app .
+
+      - name: Run Docker container
+        run: docker run -d -p 3000:80 --name react-app react-app
+
+      - name: Verify the container is running
+        run: docker ps -a
 
       - name: Clean up
         run: ./gradlew clean
