@@ -5,21 +5,21 @@ plugins {
 // Task to install npm dependencies
 task installDependencies(type: Exec) {
     description = 'Install npm dependencies'
-    commandLine "npm.cmd", "install"
+    commandLine 'npm', 'install'
 }
 
 // Task to build the React frontend
 task buildFrontend(type: Exec) {
     description = 'Build the React frontend'
     dependsOn installDependencies
-    commandLine 'npm.cmd', 'run', 'build'
+    commandLine 'npm', 'run', 'build'
 }
 
 // Task to run tests and generate a coverage report
 task runTests(type: Exec) {
     description = 'Run tests and generate coverage report'
     dependsOn installDependencies
-    commandLine 'npm.cmd', 'test', '--', '--coverage', '--no-watch'
+    commandLine 'npm', 'test', '--', '--coverage', '--no-watch'
     // Ensure the test report is generated in a known location if needed
     doLast {
         println 'Tests completed. Check the coverage report in the coverage/ directory.'
