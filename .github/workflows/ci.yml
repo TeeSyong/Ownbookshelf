@@ -34,6 +34,9 @@ jobs:
           name: test-coverage-report
           path: coverage/ # Upload the coverage directory
 
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
       - name: Package the application
         run: ./gradlew packageApplication
 
